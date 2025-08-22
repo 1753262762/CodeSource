@@ -1,0 +1,51 @@
+div{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+}
+.blue{
+    width: 100px;
+    height: 100px;
+    background-color: #c877cb !important;
+}
+#red{
+    width: 200px;
+    height: 100px;
+    background-color: red;
+}
+.box{
+    width: 200px;
+    height: 200px;
+    background-color: #c877cb;
+    margin: 30px 30px;
+    padding: 30px 20px 10px 5px ;
+    border: 5px solid black;
+    position :relative;
+}
+/* *{
+    margin: 0 auto;
+    padding: 0;
+} */
+.relative{
+    width: 200px;
+    height: 200px;
+    background-color: aquamarine;
+    position: relative;
+    top: 10px;
+    left:30px;
+}
+.absolute{
+    width: 100px;
+    height: 100px;
+    background-color: chocolate;
+    position: absolute;
+    top:100px;
+    left:100px;
+}
+/* 相对定位 */
+.father{
+    width: 200px;
+    height: 200px;
+    background-color: #c877cb;
+    position: relative;
+}

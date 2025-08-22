@@ -1,0 +1,22 @@
+# uncompyle6 version 3.9.1
+# Python bytecode version base 2.7 (62211)
+# Decompiled from: Python 3.6.12 (default, Feb  9 2021, 09:19:15) 
+# [GCC 8.3.0]
+# Embedded file name: py2.py
+# Compiled at: 2024-03-14 16:15:29
+import py_compile
+from base64 import *
+check = [
+ 3, 4, 5, 6, 7, 8, 9, 10, 10, 11, 12, 3, 13, 14, 6, 15, 16, 17, 
+ 18, 19, 20, 21, 8, 22]
+input1 = raw_input('plz input your flag:')
+if len(check) != len(input1):
+    print 'wrong'
+result = []
+for i in range(len(input1)):
+    result.append(ord(input1[i]) ^ i)
+
+if check == result:
+    print 'right'
+else:
+    print 'wrong'

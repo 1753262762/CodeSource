@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <title>作品</title>
+    <title>代码块示例</title>
+
+    <style>
+        .code-block {
+            background-color: #ffffff;
+            /* 背景颜色 */
+            border: 1px solid #ccc;
+            /* 边框 */
+            padding: 10px;
+            /* 内边距 */
+            overflow-x: auto;
+            /* 水平溢出时显示滚动条 */
+            font-family: monospace;
+            /* 使用等宽字体 */
+        }
+    </style>
+</head>
+
+<body>
+    <img src="image/CRnall_20240908_163843875.jpg" width="360" height="521">
+    <img src="image/CRnall_20240908_124511653.jpg" width="360" height="521">
+    <br>
+
+    <div class="code-block">
+        <pre>
+void DeleteNode(int position)
+{
+    if (FindNode(position) == -1)
+    {
+        return;
+    }
+    node *it = head;
+    for (re int i = 1; i < position; ++i)
+    {
+        it = it->back;
+    }
+    it->front->back = it->back;
+    free(it);
+}
+        </pre>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+body{
+    margin: 0;
+    /* 最小高度设置为视窗高度 */
+    min-height: 100vh;
+    /* 使用网格布局 */
+    display: grid;
+    /* 内容居中放置 */
+    place-content: center;
+    /* 设置渐变背景 */
+    background: linear-gradient(to top, #e6e9f0, #eef1f5);
+}
+.loader{
+    /* 设置为行内网格显示 */
+    display: inline-grid;
+    /* 宽度设置为视窗较小边的50% */
+    width: 50vmin;
+    /* 宽高比为2:1 */
+    aspect-ratio: 2;
+    /* 底部阴影（地板） */
+    box-shadow: 0 2vmin #574951;
+    /* 确保内容不会溢出 */
+    overflow: hidden;
+}
+.loader::before{
+    /* 无具体内容，用于样式生成 */
+    content:'';
+    /* 侧边距自动，以实现水平居中 */
+    margin: 0 25%;
+    /* 设置背景颜色 */
+    background-color: #83988e;
+    /* 绘制五边形 */
+    clip-path: polygon(
+        97.55% 65.45%,
+        50% 100%,
+        2.45% 65.45%,
+        20.61% 9.55%,
+        79.39% 9.55%
+    );
+    /* 设置旋转中心在底部 */
+    transform-origin: bottom;
+    /* 应用旋转和移动动画 */
+    animation: rotateAni 0.5s linear infinite,
+    moveAni 3s steps(6) infinite;
+}
+
+/* 定义动画 */
+/* 旋转动画 */
+@keyframes rotateAni {
+    0%{
+        rotate:-36deg;
+    }
+    to{
+        rotate:36deg;
+    }
+}
+/* 水平移动动画 */
+@keyframes moveAni {
+    0%{
+        translate: -174% 0;
+    }
+    to{
+        translate: 174% 0;
+    }
+}

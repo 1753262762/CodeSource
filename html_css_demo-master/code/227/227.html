@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>衣服颜色选择器</title>
+    <link rel="stylesheet" href="227.css">
+</head>
+<body>
+    <div class="container">
+        <label>
+            <input type="color" value="#e54341" list="red">
+        </label>
+        <label>
+            <input type="color" value="#b5c4a2" list="lightgreen">
+        </label>
+        <label>
+            <input type="color" value="#626066" list="gray">
+        </label>
+        <label>
+            <input type="color" value="#68b1df" list="blue">
+        </label>
+
+        <!-- datalist的id与上面color控件中的list属性对应 -->
+        <datalist id="red">
+            <option value="#e54341"></option>
+            <option value="#bc2623"></option>
+            <option value="#f4a9a7"></option>
+        </datalist>
+        <datalist id="lightgreen">
+            <option value="#b5c4a2"></option>
+            <option value="#a3b18a"></option>
+            <option value="#d1d9c9"></option>
+        </datalist>
+        <datalist id="gray">
+            <option value="#626066"></option>
+            <option value="#4d4d4f"></option>
+            <option value="#a6a6a8"></option>
+        </datalist>
+        <datalist id="blue">
+            <option value="#68b1df"></option>
+            <option value="#3a8ac1"></option>
+            <option value="#a6d2e0"></option>
+        </datalist>
+    </div>
+</body>
+</html>

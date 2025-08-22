@@ -1,0 +1,44 @@
+*{
+    /* 初始化 */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    /* 100%窗口宽高 */
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(200deg, #fdd6bd, #f794a4);
+    /* 弹性布局 居中显示 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-container{
+    /* 网格布局 3行3列 间隙20px */
+    display: grid;
+    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: 100px 100px 100px;
+    gap: 20px;
+    /* 过渡 */
+    transition: 0.5s ease;
+}
+.img-item{
+    width: 100px;
+    height: 100px;
+    /* 内阴影（内边框） */
+    box-shadow: inset 0 0 0 1px #fff;
+    background-image: url(/images/247.jpg);
+    background-size: 300px 300px;
+    /* 设置背景图像的起始位置，--bgX、--bgY为自定义变量，后面通过JS计算并赋值 */
+    background-position: var(--bgX, 0) var(--bgY, 0);
+    /* 过渡 */
+    transition: 0.5s ease;
+}
+/* 悬停样式 */
+.img-container:hover{
+    gap: 0;
+}
+.img-container:hover .img-item{
+    box-shadow: inset 0 0 0 0 #fff;
+}

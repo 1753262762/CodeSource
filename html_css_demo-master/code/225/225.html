@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全屏范围滑块</title>
+    <link rel="stylesheet" href="225.css">
+</head>
+<body>
+    <div class="container">
+        <div class="fill-area"></div>
+        <label for="range" id="range-value">0</label>
+        <input type="range" id="range" name="range" value="0" min="0" max="100" onmousemove="handleMouseMove(this.value)" onchange="handleMouseMove(this.value)" />
+    </div>
+</body>
+</html>
+<script src="225.js"></script>

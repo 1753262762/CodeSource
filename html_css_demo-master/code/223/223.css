@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d142f;
+    /* 自定义变量 */
+    --color:#716895;
+    --active-color:#ac8fd1;
+}
+.tabbar{
+    color: var(--color);
+    display: flex;
+    border-radius: 10px 10px 40px 40px;
+    box-shadow: 0 0 15px 5px var(--color);
+    /* 溢出隐藏 */
+    overflow: hidden;
+}
+.tabbar div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 110px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    --left:0;
+}
+.tabbar div .fa{
+    font-size: 32px;
+}
+.tabbar div span{
+    font-size: 14px;
+    margin-top: 5px;
+}
+.tabbar div::before{
+    content: "";
+    width: 40px;
+    height: 10px;
+    background-color: var(--active-color);
+    border-radius: 50%;
+    position: absolute;
+    left: var(--left);
+    bottom: -5px;
+    /* 模糊滤镜 */
+    filter: blur(6px);
+    /* 默认隐藏 */
+    opacity: 0;
+    transform: translateX(-50%);
+}
+.tabbar div::after{
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: var(--active-color);
+    border-radius: 1px;
+    position: absolute;
+    left: var(--left);
+    bottom: -1px;
+    filter: blur(2px);
+    opacity: 0;
+    transform: translateX(-50%);
+}
+/* 悬停样式 */
+.tabbar div:hover{
+    color: var(--active-color);
+    background: linear-gradient(to top,rgba(255,255,255,0.1),transparent);
+}
+.tabbar div:hover::before,
+.tabbar div:hover::after{
+    opacity: 1;
+}

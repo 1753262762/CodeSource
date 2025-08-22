@@ -1,0 +1,62 @@
+/* 引入谷歌字体库中的“Big Shoulders Text”字体，该字体权重支持100到900 */
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Text:wght@100..900&display=swap");
+
+/* 设置所有元素的盒模型为border-box */
+*{
+    box-sizing: border-box;
+}
+body{
+    /* 设置字体 */
+    font-family: "Big Shoulders Text";
+    /* 自动优化字体的光学表现 */
+    font-optical-sizing: auto;
+    /* 规范字体风格，确保正常显示 */
+    font-style: normal;
+    /* 弹性布局，居中对齐页面内容 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* 确保页面至少与视窗高度相同 */
+    min-height: 100vh;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    /* 背景色 */
+    background-color: #000;
+    /* 字体颜色 */
+    color: #fff;
+}
+.animated-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 设置字体大小，同时使用rem和vw单位以适应不同屏幕 */
+    font-size: 10vw;
+    line-height: 10vw;
+}
+/* 单个字母的样式 */
+.letter{
+    display: inline-block;
+    /* 定义字体粗细与宽度的变量 */
+    --wght:100;
+    --wdth:85;
+    /* 定义初始透明度 */
+    --opacity:0.25;
+    /* 定义字间距 */
+    --letter-spacing:0;
+    /* 定义字体大小 */
+    --font-size:10vw;
+    /* 应用字体变体设置 */
+    font-variation-settings: 'wght' var(--wght), 'wdth' var(--wdth);
+    /* 设置透明度 */
+    opacity: var(--opacity);
+    /* 设置字间距 */
+    letter-spacing: var(--letter-spacing);
+    /* 设置字体 */
+    font-size: var(--font-size);
+    /* 添加过渡效果，使字体变体设置、透明度、字间距和字体大小的变化更加平滑 */
+    transition: font-variation-settings 1s ease-in-out,
+        opacity 1s ease-in-out,
+        letter-spacing 2s ease-in-out,
+        font-size 1s ease-in-out;
+}

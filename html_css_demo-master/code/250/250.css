@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #f6f6f6;
+    color: #222;
+    font-size: 20px;
+    display: flex;
+}
+.loader{
+    margin: auto;
+    position: relative;
+    width: 160px;
+    height: 160px;
+}
+.loader::before,.loader::after{
+    content: "";
+    background-color: currentColor;
+    width: 25%;
+    height: 25%;
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform-origin: 100% 100%;
+    animation: ani-before 2.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+.loader::after{
+    animation-name: ani-after;
+}
+
+@keyframes ani-before {
+    from{
+        transform: rotate(0) translate(-100%, -100%) rotate(-90deg);
+    }
+    20%{
+        transform: rotate(0) translate(-100%, -100%) rotate(90deg);
+    }
+    40%{
+        transform: rotate(0) translate(-300%, -100%) rotate(90deg);
+    }
+    60%{
+        transform: rotate(90deg) translate(-300%, -100%) rotate(-90deg);
+    }
+    80%{
+        transform: rotate(90deg) translate(-100%, -100%) rotate(-90deg);
+    }
+    to{
+        transform: rotate(90deg) translate(-100%, 100%) rotate(90deg);
+    }
+}
+@keyframes ani-after {
+    from, 20%{
+        transform: rotate(0) scale(1, 1);
+    }
+    40%{        
+        transform: rotate(0) scale(3, 1);
+    }
+    60%{
+        transform: rotate(90deg) scale(3, 1);
+    }
+    80%{
+        transform: rotate(90deg) scale(1, 1);
+    }
+    to{
+        transform: rotate(90deg) scale(1, 1) translate(0, 200%);
+    }
+}

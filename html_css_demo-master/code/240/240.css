@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    background-color: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.particle{
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 1px solid #20fbb2;
+    opacity: 0;
+    /* 执行动画：动画名 时长 线性的 无限循环 */
+    animation: inf-anim 4.5s linear infinite;
+    /* 设置每个点的动画延迟时间 */
+    animation-delay: calc(0.25s * var(--i));
+}
+
+/* 自定义属性：--angle 角度 */
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 180deg;
+    inherits: true;
+}
+
+/* 定义动画 */
+@keyframes inf-anim {
+    0%{
+        --angle: 180deg;
+        --radius: 200px;
+        translate: calc(cos(var(--angle)) * var(--radius)) calc(sin(var(--angle)) * var(--radius) * -1);
+        opacity: 1;
+    }
+    50%{
+        --angle: 0deg;
+        --radius: 200px;
+        translate: calc(cos(var(--angle)) * var(--radius)) calc(sin(var(--angle)) * var(--radius) * 1);
+        opacity: 1;
+    }
+    100%{
+        --angle: -180deg;
+        --radius: 200px;
+        translate: calc(cos(var(--angle)) * var(--radius)) calc(sin(var(--angle)) * var(--radius) * -1);
+        opacity: 1;
+    }
+}

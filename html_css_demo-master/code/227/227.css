@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    /* 100%窗口宽高 */
+    width: 100vw;
+    height: 100vh;
+    /* 弹性布局 居中演示 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    display: flex;
+    gap: 10px;
+    /* 蒙版图片 CSS自定义变量，可通过var函数对其调用 */
+    --mask: url("tshirt.png") no-repeat center / contain;
+}
+/* 颜色控件样式 */
+[type="color"]{
+    /* 去除颜色控件的外貌 */
+    appearance: none;
+    border: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    /* 通过蒙版设置遮罩效果 */
+    mask:var(--mask);
+    -webkit-mask: var(--mask);
+}
+/* 颜色控件外部 */
+[type="color"]::-webkit-color-swatch-wrapper{
+    padding: 0;
+}
+/* 颜色控件内部 */
+[type="color"]::-webkit-color-swatch{
+    border: none;
+    border-radius: 0;
+    padding: 0;
+}
+/* 包含颜色控件的label */
+label:has([type="color"]){
+    width: 200px;
+    /* 宽高比设为1:1 */
+    aspect-ratio: 1 / 1;
+    background-color: #f4f4f4;
+    display: flex;
+    /* 相对定位 */
+    position: relative;
+}
+label:has([type="color"])::after{
+    content: "";
+    position: absolute;
+    /* 背景设为蒙版图片 */
+    background: var(--mask);
+    width: 100%;
+    height: 100%;
+    /* 混合模式设为正片叠底 */
+    mix-blend-mode: multiply;
+    /* 元素不对指针事件做出反应 */
+    pointer-events: none;
+}
+/* 最后加点小细节 */
+/* 悬停显示边框（内阴影） */
+label:has([type="color"]):hover{
+    box-shadow: inset 0 0 2px #9e9e9e;
+}
+/* 悬停显示提示 */
+label:has([type="color"]):hover::before{
+    content:"点击可自定义颜色";
+    position: absolute;
+    background: #555;
+    color: #fff;
+    font-size: smaller;
+    padding: 2px 4px;
+    border-radius: 2px;
+    top: 8px;
+    right: 8px;
+    z-index: 1;
+    pointer-events: none;
+}

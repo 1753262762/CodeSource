@@ -1,0 +1,180 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    /* 定义激活状态的颜色 */
+    --active-color:#0f9fff;
+    /* 定义背景颜色 */
+    --bg-color:#e1e3e5;
+    /* 定义图标默认颜色 */
+    --icon-default:#bcc0c2;
+    /* 定义图标强调颜色 */
+    --icon-accent:#ffffff;
+    /* 定义导航颜色 */
+    --navigation-color:rgba(61,64,67,0.3);
+}
+/* 设置页面主体的最小高度为视口高度，确保至少占据整个屏幕 */
+body{
+    min-block-size: 100vh;
+    /* 使用弹性盒子模型居中对齐内容 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* 设置背景颜色为全局变量定义的颜色，提高代码的可维护性和可读性 */
+    background-color: var(--bg-color);
+}
+.image-slider{
+    /* 弹性盒子 */
+    display: flex;
+    /* 设置flex-direction为column，使内部元素垂直排列，flex-flow属性使flex-direction和flex-wrap的简写 */
+    flex-flow: column;
+    /* 设置滑块的宽度，最小为360px，最大为830px，或占据视口宽度的96% */
+    width: clamp(360px, 96vw, 830px);
+    /* 设置宽高比为16:9 */
+    aspect-ratio: 16 / 9;
+    /* 最小高度 */
+    min-height: 300px;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    border-radius: 8px;
+    /* 指定container的类型为inline-size，优化布局性能 */
+    container-type: inline-size;
+    /* 启用content containment，优化渲染性能 */
+    contain: content;
+    background-color: #0006;
+    /* 增加阴影 */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+/* slider内容区域的样式 */
+.slider__content{
+    /* 占据剩余空间，使内容区域能够根据屏幕大小自适应 */
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+}
+/* 按钮样式 */
+.slider-control--button{
+    /* 移除按钮默认的边框、背景和轮廓线 */
+    border: 0;
+    background: 0;
+    outline: 0;
+    cursor: pointer;
+    /* 将内容居中对齐 */
+    place-content: center;
+    /* 设置内边距的宽度为视窗宽度的3% */
+    padding-inline: 3vw;
+    /* 设置层叠顺序 */
+    z-index: 1;
+    /* 使用网格布局 */
+    display: grid;
+}
+/* 图标样式 */
+.fa{
+    font-size: 2.5rem !important;
+    color: var(--icon-default);
+}
+/* 鼠标悬停在按钮上的样式 */
+.slider-control--button:where(:hover){
+    /* 改变背景色 */
+    background-image: linear-gradient(
+        to var(--position),
+        #0000 0%,
+        #0002,
+        #0006 100%
+    );
+    /* 改变图标颜色 */
+    .fa{
+        color: var(--icon-accent);
+    }
+}
+/* 按钮处于激活状态时的边框效果 */
+.slider-control--button:active{
+    outline: 0.2em solid var(--active-color);
+    outline-offset: -0.5em;
+}
+/* 上一个按钮 */
+.prev-button{
+    --position:left;
+}
+/* 下一个按钮 */
+.next-button{
+    --position:right;
+}
+.image-display{
+    /* 固定定位 */
+    position: fixed;
+    /* inset属性用于同时设置所有四个边的边距，这里设置为0，表示元素覆盖整个屏幕; */
+    inset: 0;
+}
+/* 导航的样式 */
+.slider-navigation{
+    /* 设置层级较高 */
+    z-index: 10;
+    /* 网格布局 */
+    display: grid;
+    /* 子元素按列自动流动，即每放置一个元素换行 */
+    grid-auto-flow: column;
+    /* 重复6次，每列占据等分的宽度 */
+    grid-template-columns: repeat(6, 1fr);
+    /* 所有列的宽度为100% */
+    grid-auto-columns: 100%;
+    /* 项目之间的间隙为1.25rem */
+    gap: 1.25rem;
+    /* 内边距 */
+    padding: 1rem;
+    /* 居中对齐 */
+    place-content: center;
+    /* 背景色 */
+    background-color: var(--navigation-color);
+    /* 背景模糊 */
+    backdrop-filter: blur(6px);
+}
+/* 缩略图按钮样式 */
+.nav-button{
+    /* 网格布局 */
+    display: grid;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5em;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    /* 居中对齐 */
+    align-items: center;
+    justify-content: center;
+    /* 无边框 */
+    border: 0;
+    /* 设置宽高比为16:9，模拟宽屏显示 */
+    aspect-ratio: 16 / 9;
+    /* 设置过渡效果，平滑变换滤镜和缩放 */
+    transition: filter 150ms linear, scale 266ms ease;
+}
+/* 缩略图样式 */
+.thumbnail{
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+/* 缩略图按钮选中时，放大1.1倍 */
+.nav-button[aria-selected="true"]{
+    scale: 1.1;
+}
+/* 缩略图按钮选中或处于焦点可见状态时，添加轮廓 */
+.nav-button[aria-selected="true"],
+.nav-button:focus-visible{
+    outline: 0.2em solid var(--active-color);
+    outline-offset: 0.2em;
+}
+/* 未被选中的缩略图按钮透明度降低 */
+.nav-button[aria-selected="false"]{
+    filter: opacity(0.7);
+}
+/* 未被选中的缩略图按钮在悬停或焦点可见时透明度恢复 */
+.nav-button[aria-selected="false"]:where(:hover,:focus-visible){
+    filter: opacity(1);
+}

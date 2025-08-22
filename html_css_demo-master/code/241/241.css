@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+/* 定义自定义属性 --turn，用于表示旋转角度 */
+@property --turn{
+    syntax: "<angle>"; /* 角度值 */
+    inherits: false; /* 不继承自父元素 */
+    initial-value: 1turn; /* 初始值为1个完整旋转 */
+}
+
+.gradient{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    --turn: 0turn;
+    /* 自定义变量 4个区块颜色值 */
+    --color-1: #ffafcc;
+    --color-2: #a2d2ff;
+    --color-3: #cdb4db;
+    --color-4: #98dbc3;
+    background: conic-gradient(from var(--turn, 0turn), var(--color-1) 25%, var(--color-2) 25%, var(--color-2) 50%, var(--color-3) 50%, var(--color-3) 75%, var(--color-4) 75%);
+    background-position: center center;
+    /* 自定义变量 光标的坐标 */
+    --offset-x: calc(var(--x) * 1px);
+    --offset-y: calc(var(--y) * 1px);
+    background-position: calc(100% + var(--offset-x, -50%)) calc(100% + var(--offset-y, -50%));
+    background-size: 200% 200%;
+    /* 调用动画：动画名 时长 线性的 无限循环的 */
+    animation: rotate 20s linear infinite;
+}
+h1{
+    font-size: 15vw;
+    font-weight: bold;
+    /* 设置元素的混合模式为overlay */
+    /* overlay模式是一种叠加模式，它会根据下面层的颜色来决定当前是增加还是减少曝光 */
+    mix-blend-mode: overlay;
+    line-height: 1.1;
+    background: linear-gradient(white 15%, black, black, white 95%);
+    /* 设置背景剪裁为文本 */
+    /* 当设置为text时，背景将会沿着文本的边界进行剪裁，允许背景颜色或图像显示在文本的边界之处 */
+    background-clip: text;
+    -webkit-background-clip: text;
+    /* 设置文本填充颜色为透明 */
+    -webkit-text-fill-color: transparent;
+}
+
+/* 定义旋转动画 */
+@keyframes rotate {
+    to{
+        --turn: 1turn;
+    }
+}

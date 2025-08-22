@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+    background-color: #000;
+}
+.marquee{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.marquee-blur{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    background-image: linear-gradient(to right, transparent, red);
+    filter: contrast(15000);
+
+    p{
+        mix-blend-mode: overlay;
+        filter: blur(0.1em);
+    }
+}
+.marquee-text{
+    font-size: 100px;
+    position: absolute;
+    min-width: 100%;
+    white-space: nowrap;
+    /* 执行动画：动画名 时长 线性的 循环的 */
+    animation: marquee 8s linear infinite;
+}
+.marquee-clear{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 定义动画 */
+@keyframes marquee {
+    from{
+        translate: 100%;
+    }
+    to{
+        translate: -50%;
+    }
+}

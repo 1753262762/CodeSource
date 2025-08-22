@@ -1,0 +1,66 @@
+/* 采用弹性布局确保加载动画居中显示 */
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #222;
+}
+/* 定义加载动画容器，相对定位 */
+.loader{
+    width: 130px;
+    height: 130px;
+    position: relative;
+    /* 应用旋转动画，动画时长2.5秒，延迟0.5秒开始，无限循环 */
+    animation: spin 2.5s ease-in-out 0.5s forwards infinite;
+}
+/* 定义小球，绝对定位，设置为中心对齐 */
+.circle{
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /* 混合模式设为颜色叠加 */
+    mix-blend-mode: plus-lighter;
+}
+/* 设置橙色小球的位置和背景颜色 */
+.circle.orange{
+    background-color: #f58004;
+    left: 0;
+}
+/* 设置绿色小球的位置和背景颜色 */
+.circle.green{
+    background-color: #4be053;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+/* 设置蓝色小球的位置和背景颜色 */
+.circle.blue{
+    background-color: #44bcf4;
+    right: 0;
+}
+/* 定义旋转动画，通过改变宽度和旋转角度实现加载效果 */
+@keyframes spin {
+    0%{
+        width: 130px;
+    }
+    25%{
+        width: 130px;
+        transform: rotate(0deg);
+    }
+    50%{
+        width: 50px;
+        transform: rotate(360deg);
+    }
+    75%{
+        width: 50px;
+        transform: rotate(0deg);
+    }
+    100%{
+        width: 130px;
+    }
+}

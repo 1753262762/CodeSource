@@ -1,0 +1,40 @@
+/*
+link
+visited
+hover
+active
+规范顺序:link > visited > hover > active
+
+结构伪类
+first-child
+last-child
+nth-child(n)
+nth-child(2n)
+nth-child(2n+1)
+nth-last-child(n)
+结构伪类可以用于选择父元素的第一个、最后一个、第n个、倒数第n个子元素.
+*/
+
+/*
+伪元素
+::before
+::after
+::first-line
+::first-letter 第一个字母
+*/
+
+/*
+first line 加粗显示
+hover 白变黑
+*/
+.divHover {
+    display: none;
+}
+
+.pHover:hover+div {
+    display: block;
+}
+
+.divHover ul li :first-child {
+    font-weight: bold;
+}

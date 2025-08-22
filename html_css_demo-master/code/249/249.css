@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+}
+.rings{
+    position: relative;
+    z-index: -1;
+}
+.ring{
+    width: 200px;
+    height: 200px;
+    border-width: 20px;
+    border-style: solid;
+    border-radius: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    margin-top: -150px;
+}
+.ring-blue{
+    border-color: #1587c1;
+    transform: translateX(-110%);
+}
+.ring-yellow{
+    border-color: #fab23f;
+    transform: translate(-55%, 45%);
+}
+.ring-black{
+    border-color: #000;
+    transform: rotate(90deg);
+}
+.ring-green{
+    border-color: #1f8b3d;
+    transform: translate(55%, 45%) rotate(180deg);
+    z-index: 2;
+}
+.ring-red{
+    border-color: #eb3350;
+    transform: translateX(110%) rotate(90deg);
+}
+.ring-segment{
+    /* border-color: blue; */
+    border-bottom-color: transparent;
+    z-index: 3;
+}

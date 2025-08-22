@@ -1,0 +1,1 @@
+freopen("a.in","r",stdin);

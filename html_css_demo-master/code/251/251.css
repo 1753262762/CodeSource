@@ -1,0 +1,145 @@
+/* 重置所有元素的边距和填充，以及盒模型为边框包含 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* 设置页面背景颜色和字体颜色，以及垂直居中显示 */
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: #212121;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 设置标题字体大小 */
+h1{
+    font-size: 26px;
+}
+/* 定义表单的宽度 */
+.form{
+    width: 260px;
+}
+/* 控件的样式，包括输入框的间隔和样式 */
+.form .control{
+    margin: 0 0 32px 0;
+}
+.form .control input{
+    width: 100%;
+    padding: 14px 16px;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+}
+/* 鼠标悬停和焦点时，移除边框和轮廓 */
+.form .control input:hover,
+.form .control input:focus{
+    outline: none;
+    border: none;
+}
+/* 定义登录按钮的样式 */
+.form .btn{
+    width: 100%;
+    display: block;
+    padding: 14px 16px;
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+}
+/* 定义一个相对定位的容器，用于实现立体效果 */
+.block-cube{
+    position: relative;
+}
+/* 实现底部斜切的背景效果 */
+.block-cube .bg-top{
+    position: absolute;
+    height: 10px;
+    background: linear-gradient(90deg, #6e2001 0%, #a23603 37%, #ffa600 94%);
+    bottom: 100%;
+    left: 5px;
+    right: -5px;
+    margin: 0;
+    transform: skew(-45deg,0);
+}
+/* 内部背景，用于遮盖输入框的边框 */
+.block-cube .bg-top .bg-inner{
+    bottom: 0;
+}
+/* 主背景，覆盖整个容器 */
+.block-cube .bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, #6e2001 0%, #a23603 37%, #ffa600 94%);
+}
+/* 右侧斜切的背景效果 */
+.block-cube .bg-right{
+    position: absolute;
+    background: #ffa600;
+    top: -5px;
+    bottom: 5px;
+    width: 10px;
+    left: 100%;
+    z-index: 0;
+    transform: skew(0,-45deg);
+}
+/* 内部背景，用于遮盖输入框的边框 */
+.block-cube .bg-right .bg-inner{
+    left: 0;
+}
+/* 主背景的内部遮盖,用于动画过渡 */
+.block-cube .bg .bg-inner{
+    transition: all 0.2s ease-in-out;
+}
+/* 主背景的内部遮盖的具体样式 */
+.block-cube .bg-inner{
+    background: #212121;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    right: 2px;
+    bottom: 2px;
+}
+/* 文本内容和输入框的定位和层级设置 */
+.block-cube .text,
+.block-cube.block-input input{
+    position: relative;
+    z-index: 2;
+}
+/* 鼠标悬停和焦点时,改变背景颜色和动画效果 */
+.block-cube.block-input .bg-top,
+.block-cube.block-input .bg-right,
+.block-cube.block-input .bg{
+    background: rgba(255,255,255,0.5);
+    transition: background 0.2s ease-in-out;
+}
+.block-cube.block-input input:focus ~ .bg-top .bg-inner,
+.block-cube.block-input input:focus ~ .bg-right .bg-inner{
+    top: 100%;
+}
+/* 动画过渡效果的详细设置 */
+.block-cube.block-input .bg-top .bg-inner,
+.block-cube.block-input .bg-right .bg-inner{
+    transition: all 0.2s ease-in-out;
+}
+.block-cube.block-input input:focus ~ .bg-top,
+.block-cube.block-input input:focus ~ .bg-right,
+.block-cube.block-input input:focus ~ .bg,
+.block-cube.block-input input:hover ~ .bg-top,
+.block-cube.block-input input:hover ~ .bg-right,
+.block-cube.block-input input:hover ~ .bg{
+    background: rgba(255,255,255,0.8);
+}
+/* 鼠标悬停或焦点时,改变背景颜色和动画效果 */
+.block-cube.block-cube-hover:focus .bg .bg-inner,
+.block-cube.block-cube-hover:hover .bg .bg-inner{
+    top: 100%;
+}

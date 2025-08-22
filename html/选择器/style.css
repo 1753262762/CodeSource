@@ -1,0 +1,25 @@
+/* .ss{
+    color: yellow;
+}
+#red{
+    color: red;
+} */
+* {
+    font-size: 50px;
+    /* 通配符选择器 */
+}
+div{
+    background-color: blue;
+}
+[width]{
+    color:blueviolet
+    /* 属性选择器 */
+}
+.red
+{
+    color: red;
+}
+#green
+{
+    color: green;
+}
